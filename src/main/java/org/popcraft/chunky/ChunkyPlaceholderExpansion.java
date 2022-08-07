@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ChunkyPlaceholderExpansion extends PlaceholderExpansion {
     private static final String IDENTIFIER = "chunky";
     private static final String AUTHOR = "pop4959";
-    private static final String VERSION = "1.0.0";
+    private static final String VERSION = "1.0.1";
     private static final String NAME = "Chunky";
     private final Chunky chunky;
 
@@ -59,7 +59,7 @@ public class ChunkyPlaceholderExpansion extends PlaceholderExpansion {
         final String placeholder = tokens[2];
         final String world = String.join("_", Arrays.copyOfRange(tokens, 3, tokens.length));
         final GenerationTask runningTask = chunky.getGenerationTasks().get(world);
-        final Optional<GenerationTask> task = Optional.ofNullable(runningTask).or(() -> chunky.getServer().getWorld(world).flatMap(w -> chunky.getConfig().loadTask(w)));
+        final Optional<GenerationTask> task = Optional.ofNullable(runningTask).or(() -> chunky.getServer().getWorld(world).flatMap(w -> chunky.getTaskLoader().loadTask(w)));
         final String parameter = switch (placeholder) {
             case "exists" -> Boolean.toString(task.isPresent());
             case "running" -> Boolean.toString(runningTask != null);
