@@ -14,8 +14,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly(group = "org.spigotmc", name = "spigot-api", version = "1.18.2-R0.1-SNAPSHOT")
-    compileOnly(group = "me.clip", name = "placeholderapi", version = "2.11.1")
+    compileOnly(group = "org.spigotmc", name = "spigot-api", version = "1.20.4-R0.1-SNAPSHOT")
+    compileOnly(group = "me.clip", name = "placeholderapi", version = "2.11.5")
     compileOnly(group = "org.popcraft", name = "chunky-common", version = "${project.property("target")}")
     compileOnly(group = "org.popcraft", name = "chunky-bukkit", version = "${project.property("target")}")
 }
@@ -33,7 +33,7 @@ tasks {
     processResources {
         filesMatching("plugin.yml") {
             expand(
-                "name" to rootProject.name.capitalize(),
+                "name" to rootProject.name,
                 "version" to project.version,
                 "group" to project.group,
                 "author" to project.property("author"),
